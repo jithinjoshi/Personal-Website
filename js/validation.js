@@ -13,10 +13,17 @@ const nameInput = document.getElementById('name');
 const emailInput = document.getElementById('email');
 const mobileInput = document.getElementById('mobile');
 const messageInput = document.getElementById('message');
+const msgInput = document.getElementById('msg');
 
 const errorHint = document.getElementsByClassName('error-hint');
 
 let isValidated = false;
+
+let isValid;
+
+
+
+
 
 function resetElement(elm){
     elm.classList.remove('invalid');
@@ -35,27 +42,40 @@ function  invalidElement(elm){
 function validateInput(){
     if(!isValidated) return;
 
+     isValid = true;
+
     resetElement(nameInput);
     resetElement(emailInput);
     resetElement(mobileInput);
     resetElement(messageInput);
+    resetElement(msgInput)
 
     
 
-    if(!nameInput.value){
-        invalidElement(nameInput);    
+    if(!nameInput.value || nameInput.value[0]===" "){
+        invalidElement(nameInput);
+        isValid = false;    
     }
 
     if(!isValidEmail(emailInput.value)){
         invalidElement(emailInput)
+        isValid = false;
+        
         
     }
     if(!isValidPhone(mobileInput.value)){
-        invalidElement(mobileInput)   
+        invalidElement(mobileInput)
+        isValid = false;   
     }
 
-    if(!messageInput.value){
-        invalidElement(messageInput);    
+    if(!messageInput.value|| messageInput.value[0]===" "){
+        invalidElement(messageInput);
+        isValid = false;    
+    }
+
+    if(!msgInput.value || msgInput.value.length < 30 || msgInput.value[0]===" "){
+        invalidElement(msgInput);
+        isValid = false;
     }
 }
 
@@ -63,6 +83,11 @@ form.addEventListener('submit',function(e){
     e.preventDefault();
     isValidated = true;
     validateInput();
+
+    if(isValid === true){
+        alert("Form is submitted successfully..")
+        form.reset();
+    }
 })
 
 nameInput.addEventListener('input',function(){
@@ -78,6 +103,10 @@ mobileInput.addEventListener('input',function(){
 })
 
 messageInput.addEventListener('input',function(){
+    validateInput();
+})
+
+msgInput.addEventListener('input',function(){
     validateInput();
 })
 

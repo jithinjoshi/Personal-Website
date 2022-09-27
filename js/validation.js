@@ -85,6 +85,7 @@ form.addEventListener('submit',function(e){
     validateInput();
 
     if(isValid === true){
+        submitformurl();
         alert("Form is submitted successfully..")
         form.reset();
     }

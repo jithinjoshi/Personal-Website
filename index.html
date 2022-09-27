@@ -432,28 +432,28 @@
 
           <div class="col-md-6 order-md-last d-flex">
 			
-            <form id="form" class="bg-light p-4 p-md-5 contact-form">
+            <form id="form" method="post"  class="bg-light p-4 p-md-5 contact-form">
 				
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Your Name" id="name">
+                <input type="text" class="form-control" placeholder="Your Name" id="name" name="name">
 				<div class="error-hint hidden">Invalid Name</div>
               </div>
 			 
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Your Email" id="email">
+                <input type="text" class="form-control" placeholder="Your Email" id="email" name="email">
 				<div class="error-hint hidden">Invalid Email</div>
               </div>
 			 
 			  <div class="form-group">
-                <input type="text" class="form-control" placeholder="Your Mobile Number" id="mobile">
+                <input type="text" class="form-control" placeholder="Your Mobile Number" id="mobile" name="Phone">
 				<div class="error-hint hidden">Invalid Phone Number</div>
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Subject" id="message">
+                <input type="text" class="form-control" placeholder="Subject" id="message" name="subject">
 				<div class="error-hint hidden">Invalid subject</div>
               </div>
               <div class="form-group">
-                <textarea name="" cols="30" rows="7" class="form-control" placeholder="Message" id="msg"></textarea>
+                <textarea  cols="30" rows="7" class="form-control" placeholder="Message" id="msg" name="message"></textarea>
 				<div class="error-hint hidden">Message should contain atleast 30 characters</div>
               </div>
               <div class="form-group">
@@ -533,6 +533,17 @@
   <script src="js/scrollax.min.js"></script>
   
   <script src="js/main.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    function submitformurl() {
+        $.ajax({
+          url: "https://script.google.com/macros/s/AKfycbz95jpBxKocqhgwNG-OyexdNG5P6yjIhqSB986iw7F7D1elzjsMhJe7bToHzhpw-u2-fQ/exec",
+          data: $("#form").serialize(),
+          method: "post",
+        })
+      }
+  </script>
     
   </body>
 </html>
